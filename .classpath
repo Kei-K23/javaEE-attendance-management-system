@@ -8,6 +8,17 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/arkarmin/Downloads/javaEE-download/gson-2.11.0.jar"/>
+	<classpathentry kind="lib" path="/Users/arkarmin/Downloads/javaEE-download/jackson-core-2.17.1.jar"/>
+	<classpathentry kind="lib" path="/Users/arkarmin/Downloads/javaEE-download/javax.servlet.jsp-api-2.3.3.jar"/>
+	<classpathentry kind="lib" path="/Users/arkarmin/Downloads/javaEE-download/javax.servlet.jsp.jstl-api-1.2.2.jar"/>
+	<classpathentry kind="lib" path="/Users/arkarmin/Downloads/javaEE-download/jbcrypt-0.4.jar"/>
+	<classpathentry kind="lib" path="/Users/arkarmin/Downloads/javaEE-download/taglibs-standard-impl-1.2.5.jar"/>
+	<classpathentry kind="lib" path="/Users/arkarmin/Downloads/javaEE-download/mysql-connector-j-8.4.0/mysql-connector-j-8.4.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
