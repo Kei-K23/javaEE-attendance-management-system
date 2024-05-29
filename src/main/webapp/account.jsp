@@ -1,22 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="java.util.*, java.text.SimpleDateFormat" %>
+<%@ page import="java.util.*, java.text.SimpleDateFormat"%>
 
 <%
-//Initialize date variables
-		List<String> dates = new ArrayList<>();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Calendar cal = Calendar.getInstance();
+// Initialize date variables
+List<String> dates = new ArrayList<>();
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+Calendar cal = Calendar.getInstance();
+String today = sdf.format(cal.getTime());
 
-		// Generate the next 7 days
-		for (int i = 0; i < 7; i++) {
-			dates.add(sdf.format(cal.getTime()));
-			cal.add(Calendar.DAY_OF_MONTH, 1);
-		}
+// Generate the next 7 days
+for (int i = 0; i < 7; i++) {
+	dates.add(sdf.format(cal.getTime()));
+	cal.add(Calendar.DAY_OF_MONTH, 1);
+}
 
-		// Set the dates list as a request attribute
-		request.setAttribute("dates", dates);
+// Set the dates list and today's date as request attributes
+request.setAttribute("dates", dates);
+request.setAttribute("today", today);
 %>
 
 <!DOCTYPE html>
@@ -55,19 +57,22 @@
 					<c:forEach var="date" items="${dates}">
 						<tr>
 							<th scope="row">${date}</th>
-
-							<td><form>
-									<button>Check in</button>
-								</form></td>
-							<td><form>
+							<td>
+								<form>
+									<button <c:if test="${date != today}">disabled</c:if>>Check
+										in</button>
+								</form>
+							</td>
+							<td>
+								<form>
 									<button>Check out</button>
-								</form></td>
+								</form>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 			<ul>
-
 			</ul>
 		</c:when>
 		<c:otherwise>
@@ -77,6 +82,5 @@
 			</p>
 		</c:otherwise>
 	</c:choose>
-
 </body>
 </html>
