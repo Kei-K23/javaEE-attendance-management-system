@@ -23,7 +23,7 @@
 			<div class="alert alert-danger" role="alert">${errorMsg}</div>
 		</c:when>
 	</c:choose>
-	<form action="/web1/register" method="post">
+	<form action="/javaEE-attendance-management-system/register" method="post">
 		<div class="mb-3">
 			<label for="user" class="form-label">Username</label> <input
 				type="text" name="username" min="3" required="required"

@@ -11,14 +11,14 @@ import java.util.logging.Logger;
 import dev.kei.entity.User;
 import dev.kei.util.DB;
 
-public class UserRepository {
+public class AttendanceRepository {
 
-	private static final Logger logger = Logger.getLogger(UserRepository.class.getName());
+	private static final Logger logger = Logger.getLogger(AttendanceRepository.class.getName());
 
 	public List<User> findAll() {
 		try (Connection connection = DB.getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet rs = statement.executeQuery("SELECT * FROM users");
+				ResultSet rs = statement.executeQuery("SELECT * FROM attendnaces");
 
 		) {
 			logger.info("findAll::Retrieving users from the database...");

@@ -16,7 +16,7 @@ public final class DB {
 		if (connection == null || connection.isClosed()) {
 			try {
 				// hide credentials
-				String dbURL = "jdbc:mysql://localhost:3306/javaEE-crm";
+				String dbURL = "jdbc:mysql://localhost:3306/javaEE-attendance-management-system-db";
 				String dbUsername = "root";
 				String dbPassword = "keik23012023";
 

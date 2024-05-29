@@ -2,6 +2,9 @@ package dev.kei.controller;
 
 import java.io.IOException;
 
+import dev.kei.entity.User;
+import dev.kei.service.UserService;
+import dev.kei.util.PasswordUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,20 +15,28 @@ import jakarta.servlet.http.HttpServletResponse;
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public RegisterServlet() {
-		super();
-	}
-
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html");
-
+		request.setAttribute("message", "this is message in register");
 		getServletContext().getRequestDispatcher("/register.jsp").forward(request, response);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
-	}
 
+		UserService userService = new UserService();
+
+		String username = request.getParameter("username");
+
+		String password = PasswordUtil.hashPassword(request.getParameter("password"));
+		String email = request.getParameter("email");
+
+		User user = new User(username, email, password);
+
+		userService.save(user);
+		response.sendRedirect("login.jsp");
+	}
 }
