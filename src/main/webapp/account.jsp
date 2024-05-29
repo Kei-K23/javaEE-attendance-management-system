@@ -1,6 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.util.*, java.text.SimpleDateFormat" %>
+
+<%
+//Initialize date variables
+		List<String> dates = new ArrayList<>();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar cal = Calendar.getInstance();
+
+		// Generate the next 7 days
+		for (int i = 0; i < 7; i++) {
+			dates.add(sdf.format(cal.getTime()));
+			cal.add(Calendar.DAY_OF_MONTH, 1);
+		}
+
+		// Set the dates list as a request attribute
+		request.setAttribute("dates", dates);
+%>
 
 <!DOCTYPE html>
 <html>
@@ -23,6 +40,35 @@
 			<h1>Welcome, ${sessionScope.username}</h1>
 			<a href="${pageContext.request.contextPath}/logout"
 				class="btn btn-danger">Logout</a>
+
+			<!-- Display the next 7 days -->
+			<h2>Next 7 Days:</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">Date</th>
+						<th scope="col">Check in</th>
+						<th scope="col">Check out</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="date" items="${dates}">
+						<tr>
+							<th scope="row">${date}</th>
+
+							<td><form>
+									<button>Check in</button>
+								</form></td>
+							<td><form>
+									<button>Check out</button>
+								</form></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			<ul>
+
+			</ul>
 		</c:when>
 		<c:otherwise>
 			<p>
@@ -31,6 +77,6 @@
 			</p>
 		</c:otherwise>
 	</c:choose>
-	
+
 </body>
 </html>

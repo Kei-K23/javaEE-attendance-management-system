@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
 			session.setMaxInactiveInterval(60 * 60 * 24);
-			response.sendRedirect("account.jsp");
+			response.sendRedirect(request.getContextPath() + "/account");
 		} else {
 			request.setAttribute("errorMsg", "Invalid username or password");
 			getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);

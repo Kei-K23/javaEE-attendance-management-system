@@ -14,4 +14,24 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AccountServlet</display-name>
+    <servlet-name>AccountServlet</servlet-name>
+    <servlet-class>dev.kei.controller.AccountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccountServlet</servlet-name>
+    <url-pattern>/account</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CheckInServlet</display-name>
+    <servlet-name>CheckInServlet</servlet-name>
+    <servlet-class>dev.kei.controller.CheckInServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckInServlet</servlet-name>
+    <url-pattern>/check-in</url-pattern>
+  </servlet-mapping>
 </web-app>
